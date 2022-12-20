@@ -1,3 +1,14 @@
+class Board:
+    """
+    Creates instances of a playing grid and calls methods to generate ships on the grid
+    """
+    def __init__(self, player, name, size, ships):
+        self.player = player
+        self.name = name
+        self.size = size
+        self.ships = ships
+
+
 def check_grid_size():
     """
     Asks the user what size grid they would like to play on
@@ -46,6 +57,9 @@ def main():
     name = input("Please enter your name:\n")
     grid = check_grid_size()
     ships = check_num_ships()
+    player_board = Board(1, name, grid, ships)
+    comp_board = Board(2, "Computer", grid, ships)
+    
     # create grid
     # place ships
     # play game {
