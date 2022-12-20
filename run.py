@@ -8,6 +8,20 @@ class Board:
         self.size = size
         self.ships = ships
 
+    
+    def generate_game_board(self, size, ships):
+        """
+        Code that generates the game board
+        """
+        game_board = []
+        for i in range(size):
+            inner_list = []
+            for j in range(size):
+                inner_list.append("?")
+            game_board.append(inner_list)
+        return game_board
+
+
 
 def check_grid_size():
     """
@@ -57,9 +71,10 @@ def main():
     name = input("Please enter your name:\n")
     grid = check_grid_size()
     ships = check_num_ships()
-    player_board = Board(1, name, grid, ships)
-    comp_board = Board(2, "Computer", grid, ships)
-    
+    player = Board(1, name, grid, ships)
+    comp = Board(2, "Computer", grid, ships)
+    player_board = player.generate_game_board(grid, ships)
+    print(player_board)
     # create grid
     # place ships
     # play game {
