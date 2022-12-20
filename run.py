@@ -1,4 +1,4 @@
-def check_grid_size(name):
+def check_grid_size():
     """
     Asks the user what size grid they would like to play on
     """
@@ -18,14 +18,34 @@ def check_grid_size(name):
     return grid_size
 
 
+def check_num_ships():
+    """
+    Asks user to specify the number of ships they would like to use
+    """
+    while True:
+        try:
+            ships = int(input("How many ships would you like to use? (between 2 and 10)\n"))
+        except ValueError:
+            print("Please enter only a number")
+            continue
+
+        if ships < 2 or ships > 10:
+            print("please enter a number between 2 and 10")
+            continue
+        else:
+            break
+
+        return ships
+
+
 def main():
     """
     Main method that starts the game and calls all other methods
     """
     print("Welcome to Battleship!\n")
     name = input("Please enter your name:\n")
-    check_grid_size(name)
-    # number of ships
+    grid = check_grid_size()
+    ships = check_num_ships()
     # create grid
     # place ships
     # play game {
