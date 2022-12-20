@@ -1,4 +1,21 @@
+def check_grid_size(name):
+    """
+    Asks the user what size grid they would like to play on
+    """
+    while True:
+        try:
+            grid_size = int(input("What size square grid would you like to use? (between 5 and 10)\n"))
+        except ValueError:
+            print("Please enter only a number")
+            continue
 
+        if grid_size < 5 or grid_size > 10:
+            print("please enter a number between 5 and 10")
+            continue
+        else:
+            break
+
+    return grid_size
 
 
 def main():
@@ -7,7 +24,7 @@ def main():
     """
     print("Welcome to Battleship!\n")
     name = input("Please enter your name:\n")
-    # size grid
+    check_grid_size(name)
     # number of ships
     # create grid
     # place ships
