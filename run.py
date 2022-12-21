@@ -1,6 +1,7 @@
 class Board:
     """
-    Creates instances of a playing grid and calls methods to generate ships on the grid
+    Creates instances of a playing grid and calls methods
+     to generate ships on the grid
     """
     def __init__(self, player, name, size, ships):
         self.player = player
@@ -8,7 +9,6 @@ class Board:
         self.size = size
         self.ships = ships
 
-    
     def generate_game_board(self, size, ships):
         """
         Code that generates the game board
@@ -63,6 +63,19 @@ def check_num_ships():
         return ships
 
 
+def start_game(name, player, comp):
+    print(f"\n{name}'s board\n")
+    for i in range(len(player)):
+        for j in range(len(player[i])):
+            print(player[i][j], end= " ")
+        print("")
+
+    print("\nComputers board\n")
+    for i in range(len(comp)):
+        for j in range(len(comp[i])):
+            print(comp[i][j], end= " ")
+        print("")
+
 def main():
     """
     Main method that starts the game and calls all other methods
@@ -74,7 +87,8 @@ def main():
     player = Board(1, name, grid, ships)
     comp = Board(2, "Computer", grid, ships)
     player_board = player.generate_game_board(grid, ships)
-    print(player_board)
+    comp_board = comp.generate_game_board(grid, ships)
+    start_game(name, player_board, comp_board)
     # create grid
     # place ships
     # play game {
