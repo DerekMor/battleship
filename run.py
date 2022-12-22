@@ -1,13 +1,15 @@
+import random
+
+
 class Board:
     """
     Creates instances of a playing grid and calls methods
      to generate ships on the grid
     """
-    def __init__(self, player, name, size, ships):
+    def __init__(self, player, name, size):
         self.player = player
         self.name = name
         self.size = size
-        self.ships = ships
 
     def generate_game_board(self, size, ships):
         """
@@ -22,7 +24,31 @@ class Board:
         return game_board
 
 
+def generate_ship_locations(ships, size):
+    """
+    Randomly allocates ships to positions on grid
+    """
+    ship_list = []
+    while len(ship_list) < ships:
+        a = random.randint(0, size)
+        b = random.randint(0, size)
+        ship = [a, b]
+        print(ship)
+        
+        if len(ship_list) == 0:
+            ship_list.append(ship)
+            continue
+        has_match = False
+        for i in ship_list:
+            if i == ship:
+                has_match = True
+                break
+        if has_match is False:
+            ship_list.append(ship)   
 
+    return ship_list
+
+         
 def check_grid_size():
     """
     Asks the user what size grid they would like to play on
@@ -60,10 +86,10 @@ def check_num_ships():
         else:
             break
 
-        return ships
+    return ships
 
 
-def start_game(name, player, comp):
+def display_boards(name, player, comp):
     print(f"\n{name}'s board\n")
     for i in range(len(player)):
         for j in range(len(player[i])):
@@ -80,15 +106,20 @@ def main():
     """
     Main method that starts the game and calls all other methods
     """
+    # Starting questions
     print("Welcome to Battleship!\n")
     name = input("Please enter your name:\n")
     grid = check_grid_size()
     ships = check_num_ships()
-    player = Board(1, name, grid, ships)
-    comp = Board(2, "Computer", grid, ships)
+    # Initialise game boards
+    player = Board(1, name, grid)
+    comp = Board(2, "Computer", grid)
     player_board = player.generate_game_board(grid, ships)
     comp_board = comp.generate_game_board(grid, ships)
-    start_game(name, player_board, comp_board)
+    # Start the game
+    display_boards(name, player_board, comp_board)
+    player_ships = generate_ship_locations(ships, grid)
+    print(player_ships)
     # create grid
     # place ships
     # play game {
