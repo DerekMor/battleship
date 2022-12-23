@@ -104,6 +104,21 @@ def display_boards(name, player, comp):
             print(comp[i][j], end= " ")
         print("")
 
+# def update_boards(name, board, guess):
+#    """
+#    Updates the game board using a guess
+#    """
+
+
+def place_player_ships(board, list):
+    """
+    Places the players ships visable on the board
+    """
+    for i in range(len(list)):
+        board[list[i][0]][list[i][1]] = "@"
+
+    return board
+
 
 def main():
     """
@@ -120,9 +135,10 @@ def main():
     player_board = player.generate_game_board(grid, ships)
     comp_board = comp.generate_game_board(grid, ships)
     # Start the game
-    display_boards(name, player_board, comp_board)
     player_ships = generate_ship_locations(ships, grid)
     computer_ships = generate_ship_locations(ships, grid)
+    player_board = place_player_ships(player_board, player_ships)
+    display_boards(name, player_board, comp_board)
     # create grid
     # place ships
     # play game {
