@@ -33,8 +33,8 @@ def generate_ship_locations(ships, size):
     """
     ship_list = []
     while len(ship_list) < ships:
-        a = random.randint(0, size)
-        b = random.randint(0, size)
+        a = random.randint(0, (size -1))
+        b = random.randint(0, (size -1))
         ship = [a, b]
        
         if len(ship_list) == 0:
@@ -131,11 +131,9 @@ def get_player_guess(size, board):
             print("Please enter only a number")
             continue
 
-        if c1 < 0 or c1 > size:
-            print(f"please enter a number between 0 and {size}")
+        if c1 < 0 or c1 > (size -1):
+            print(f"please enter a number between 0 and {size -1}")
             continue
-        else:
-            break
 
         try:
             c2 = int(input("Please enter your second coordinate:\n"))
@@ -143,17 +141,37 @@ def get_player_guess(size, board):
             print("Please enter only a number")
             continue
 
-        if c2 < 0 or c2 > size:
-            print(f"please enter a number between 0 and {size}")
+        if c2 < 0 or c2 > (size -1):
+            print(f"please enter a number between 0 and {size -1}")
+            continue
+        
+        print(f"You have entered {c1}, {c2}")
+        guess = [c1, c2]
+        if board[c1][c2] != "?":
+            print("Coordinates have already been guessed, please try again")
             continue
         else:
             break
-        print(f"You have entered {c1}, {c2}")
-        guess = [c1, c2]
-        if board[guess[0], guess[1]] != "?":
-            print("Coordinates have already been guessed, please try again")
-            continue
     return guess
+
+
+def check_player_hit(guess, board, ships):
+    """
+    checks for hit or miss on board
+    """
+    hit = False
+    for i in range(len(ships)):
+        if ships[i] == guess:
+            hit = True
+            board[guess[0]][guess[1]] = "*"
+            break
+        else:
+            board[guess[0]][guess[1]] = "X"
+    if hit:
+        print("HIT")
+    else:
+        print("Miss")
+    return board
 
 
 def main():
@@ -177,11 +195,13 @@ def main():
     has_winner = False
     player_score = 0
     computer_score = 0
-    while has_winner == False:
+    while has_winner is False:
         display_boards(name, player_board, comp_board)
-        guess = get_player_guess(grid, comp_board)
+        player_guess = get_player_guess(grid, comp_board)
+        comp_board = check_player_hit(player_guess, comp_board, computer_ships)
+        print(player_score)
 
-    # pick a coordinate
+  
     # check for him or miss and display message
     # if hit check for win
     # generate comp guess
