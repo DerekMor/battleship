@@ -120,6 +120,42 @@ def place_player_ships(board, list):
     return board
 
 
+def get_player_guess(size, board):
+    """
+    Asks player for coordinates, validates input, checks if it has been previously guessed
+    """
+    while True:
+        try:
+            c1 = int(input("Please enter your first coordinate. The top left corner is position 0, 0:\n"))
+        except ValueError:
+            print("Please enter only a number")
+            continue
+
+        if c1 < 0 or c1 > size:
+            print(f"please enter a number between 0 and {size}")
+            continue
+        else:
+            break
+
+        try:
+            c2 = int(input("Please enter your second coordinate:\n"))
+        except ValueError:
+            print("Please enter only a number")
+            continue
+
+        if c2 < 0 or c2 > size:
+            print(f"please enter a number between 0 and {size}")
+            continue
+        else:
+            break
+        print(f"You have entered {c1}, {c2}")
+        guess = [c1, c2]
+        if board[guess[0], guess[1]] != "?":
+            print("Coordinates have already been guessed, please try again")
+            continue
+    return guess
+
+
 def main():
     """
     Main method that starts the game and calls all other methods
@@ -134,15 +170,17 @@ def main():
     comp = Board(2, "Computer", grid)
     player_board = player.generate_game_board(grid, ships)
     comp_board = comp.generate_game_board(grid, ships)
-    # Start the game
     player_ships = generate_ship_locations(ships, grid)
     computer_ships = generate_ship_locations(ships, grid)
     player_board = place_player_ships(player_board, player_ships)
-    display_boards(name, player_board, comp_board)
-    # create grid
-    # place ships
-    # play game {
-    # dislay game grid
+    # start game
+    has_winner = False
+    player_score = 0
+    computer_score = 0
+    while has_winner == False:
+        display_boards(name, player_board, comp_board)
+        guess = get_player_guess(grid, comp_board)
+
     # pick a coordinate
     # check for him or miss and display message
     # if hit check for win
