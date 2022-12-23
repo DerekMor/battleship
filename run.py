@@ -19,7 +19,10 @@ class Board:
         for i in range(size):
             inner_list = []
             for j in range(size):
-                inner_list.append("?")
+                if self.name == "Computer":
+                    inner_list.append("?")
+                else:
+                    inner_list.append("-")
             game_board.append(inner_list)
         return game_board
 
@@ -33,8 +36,7 @@ def generate_ship_locations(ships, size):
         a = random.randint(0, size)
         b = random.randint(0, size)
         ship = [a, b]
-        print(ship)
-        
+       
         if len(ship_list) == 0:
             ship_list.append(ship)
             continue
@@ -102,6 +104,7 @@ def display_boards(name, player, comp):
             print(comp[i][j], end= " ")
         print("")
 
+
 def main():
     """
     Main method that starts the game and calls all other methods
@@ -119,7 +122,7 @@ def main():
     # Start the game
     display_boards(name, player_board, comp_board)
     player_ships = generate_ship_locations(ships, grid)
-    print(player_ships)
+    computer_ships = generate_ship_locations(ships, grid)
     # create grid
     # place ships
     # play game {
