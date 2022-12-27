@@ -109,11 +109,6 @@ def display_boards(name, player, comp):
         print("")
     print("\n")
 
-# def update_boards(name, board, guess):
-#    """
-#    Updates the game board using a guess
-#    """
-
 
 def place_player_ships(board, list):
     """
