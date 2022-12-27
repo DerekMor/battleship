@@ -174,6 +174,19 @@ def check_player_hit(guess, board, ships):
     return board
 
 
+def check_win(board, ships, name):
+    hits = 0
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if board[i][j] == "*":
+                hits += 1
+    if hits == ships:
+        print(f"{name} has won!")
+        return True
+    else:
+        return False
+
+
 def main():
     """
     Main method that starts the game and calls all other methods
@@ -193,13 +206,15 @@ def main():
     player_board = place_player_ships(player_board, player_ships)
     # start game
     has_winner = False
-    player_score = 0
-    computer_score = 0
     while has_winner is False:
         display_boards(name, player_board, comp_board)
         player_guess = get_player_guess(grid, comp_board)
         comp_board = check_player_hit(player_guess, comp_board, computer_ships)
-        print(player_score)
+        player_win = check_win(comp_board, ships, name)
+        if player_win:
+            break
+        
+        
 
   
     # check for him or miss and display message
