@@ -1,4 +1,5 @@
 import random
+import time
 
 
 class Board:
@@ -92,6 +93,9 @@ def check_num_ships():
 
 
 def display_boards(name, player, comp):
+    """
+    Displays game boards to console
+    """
     print(f"\n{name}'s board\n")
     for i in range(len(player)):
         for j in range(len(player[i])):
@@ -103,6 +107,7 @@ def display_boards(name, player, comp):
         for j in range(len(comp[i])):
             print(comp[i][j], end= " ")
         print("")
+    print("\n")
 
 # def update_boards(name, board, guess):
 #    """
@@ -146,6 +151,7 @@ def get_player_guess(size, board):
             continue
         
         print(f"You have entered {c1}, {c2}")
+        time.sleep(1.5)
         guess = [c1, c2]
         if board[c1][c2] != "?":
             print("Coordinates have already been guessed, please try again")
@@ -169,12 +175,17 @@ def check_player_hit(guess, board, ships):
             board[guess[0]][guess[1]] = "X"
     if hit:
         print("HIT")
+        time.sleep(1.5)
     else:
         print("Miss")
+        time.sleep(1.5)
     return board
 
 
 def check_win(board, ships, name):
+    """
+    Checks the hits on the board to check for winning conditions
+    """
     hits = 0
     for i in range(len(board)):
         for j in range(len(board[i])):
@@ -182,9 +193,37 @@ def check_win(board, ships, name):
                 hits += 1
     if hits == ships:
         print(f"{name} has won!")
+        time.sleep(1.5)
         return True
     else:
         return False
+
+
+def get_comp_guess(size, board):
+    """
+    Generates a computer guess and makes sure it is not a duplicate guess
+    """
+    while True:
+        a = random.randint(0, (size -1))
+        b = random.randint(0, (size -1))
+        if board[a][b] == "-":
+            print(f"Computer has guessed {a}, {b}")
+            time.sleep(1.5)
+            print("Computer missed!")
+            time.sleep(1.5)
+            board[a][b] = "X"
+            break
+        elif board[a][b] == "@":
+            print(f"Computer has guessed {a}, {b}")
+            time.sleep(1.5)
+            print("Computer has hit!")
+            time.sleep(1.5)
+            board[a][b] = "*"
+            break
+        else:
+            continue
+    
+    return board
 
 
 def main():
@@ -210,15 +249,24 @@ def main():
         display_boards(name, player_board, comp_board)
         player_guess = get_player_guess(grid, comp_board)
         comp_board = check_player_hit(player_guess, comp_board, computer_ships)
-        player_win = check_win(comp_board, ships, name)
+        player_win = check_win(comp_board, ships, player.name)
+
         if player_win:
             break
-        
-        
 
-  
-    # check for him or miss and display message
-    # if hit check for win
+        player_board = get_comp_guess(grid, player_board)
+
+        comp_win = check_win(player_board, ships, comp.name)
+
+        if comp_win:
+            break
+
+    print("Thanks for playing!")
+    time.sleep(1.5)
+    play_again = input("Enter 'Y' to play again or anything else to end game\n")
+    if play_again == "Y":
+        main()
+
     # generate comp guess
     # if hit check for win
     # when won diplay message
