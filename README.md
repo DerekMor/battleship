@@ -10,3 +10,10 @@ Players can only see "?" on the computers board \
 Players and computers then take turns to guess where the opponents ships are \
 Hits are marked with an "*" and missed with a "X"\
 The winner is the first to hit and sink all the opponents ships
+## Features
+### Custom Board Generation
+- Players can enter their name
+- Players can decide how big a board to use
+- Players can decide how many ships to use
+- A board is then generated with randomly allocated ships
+<img src="assets/images/customboard.png" alt="Screenshot of custom board generation">
