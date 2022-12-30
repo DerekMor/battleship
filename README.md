@@ -10,6 +10,7 @@ Players can only see "?" on the computers board \
 Players and computers then take turns to guess where the opponents ships are \
 Hits are marked with an "*" and missed with a "X"\
 The winner is the first to hit and sink all the opponents ships
+
 ## Features
 ### Custom Board Generation
 - Players can enter their name
@@ -29,6 +30,11 @@ The winner is the first to hit and sink all the opponents ships
 - The computer guess goes through the same checking as the player guess
 - The game then checks for a winner after each guess
 - After there has been a winner the player can decide to play again if they wish
-## Features not implemented
+
+### Features not implemented
 - Different size ships depending on how many ships and how big a board are selected
 - A coin toss before the game starts to see who goes first
+
+## Data Model
+The data model in this program is the board class. The board class takes in the player name and size of the board.\
+The class has an iternal method which populates the boards with "-" or "?" depending on which players board it is\
