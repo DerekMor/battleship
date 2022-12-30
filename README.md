@@ -22,4 +22,13 @@ The winner is the first to hit and sink all the opponents ships
   - Only numbers can be entered
   - Only coordinates on the board can be entered
   - The same coordinates cannot be guessed twice
+
 <img src="assets/images/errorchecking.png" alt="Screenshot of custom board generation">
+- The game tells the player if they have hit or miss
+- The game then shows the randomly gernerated computer guess and tells if it has been a hit or miss
+- The computer guess goes through the same checking as the player guess
+- The game then checks for a winner after each guess
+- After there has been a winner the player can decide to play again if they wish
+## Features not implemented
+- Different size ships depending on how many ships and how big a board are selected
+- A coin toss before the game starts to see who goes first
