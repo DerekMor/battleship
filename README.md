@@ -17,3 +17,9 @@ The winner is the first to hit and sink all the opponents ships
 - Players can decide how many ships to use
 - A board is then generated with randomly allocated ships
 <img src="assets/images/customboard.png" alt="Screenshot of custom board generation">
+- Players can then enter their guess
+  - Coordinates are then error checked 
+  - Only numbers can be entered
+  - Only coordinates on the board can be entered
+  - The same coordinates cannot be guessed twice
+<img src="assets/images/errorchecking.png" alt="Screenshot of custom board generation">
