@@ -53,3 +53,9 @@ The class has an iternal method which populates the boards with "-" or "?" depen
 - No unsolved bugs remaining
 
 ## Deployment
+- Create new Heroku app
+- Add Python and node.js buildpacks
+- Add config vars
+- Link Heroku app to Github repo
+- Click deploy
+
