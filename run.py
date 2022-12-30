@@ -58,8 +58,8 @@ def check_grid_size():
     """
     while True:
         try:
-            grid_size = int(input("What size square grid would you like to \
-                 use? \(between 5 and 10)\n"))
+            grid_size = int(input("What size square grid would you like?"
+                                  "(between 5 and 10)\n"))
         except ValueError:
             print("Please enter only a number")
             continue
@@ -79,8 +79,8 @@ def check_num_ships():
     """
     while True:
         try:
-            ships = int(input("How many ships would you like to \
-                use? (between 2 and 10)\n"))
+            ships = int(input("How many ships would you like to use?"
+                              "(between 2 and 10)\n"))
         except ValueError:
             print("Please enter only a number")
             continue
@@ -129,8 +129,8 @@ def get_player_guess(size, board):
     """
     while True:
         try:
-            c1 = int(input("Please enter your first coordinate. \
-                The top left corner is position 0, 0:\n"))
+            c1 = int(input("Please enter your first coordinate."
+                           "The top left corner is position 0, 0:\n"))
         except ValueError:
             print("Please enter only a number")
             continue
