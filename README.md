@@ -38,3 +38,18 @@ The winner is the first to hit and sink all the opponents ships
 ## Data Model
 The data model in this program is the board class. The board class takes in the player name and size of the board.\
 The class has an iternal method which populates the boards with "-" or "?" depending on which players board it is\
+
+## Testing
+- Game has been tested on Github terminal and Code Institute Heroku terminals
+- PEP8 linter showed up line to long errors which were fixed. No othe rmajor issues found
+- All inputs tested with different number ranges and letters
+
+## Bugs
+### Solved
+- Loop checking for hits would not update board. Adding a break statement solved the issue
+- The game origionally only checked for a win after each pair of turns not each guess, this caused an issue if both players hit a winning condition on the same turn
+
+### Unsolved
+- No unsolved bugs remaining
+
+## Deployment
