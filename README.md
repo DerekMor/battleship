@@ -59,3 +59,6 @@ The class has an iternal method which populates the boards with "-" or "?" depen
 - Link Heroku app to Github repo
 - Click deploy
 
+## Credits
+- Main readme image from Am I responsive? 
+- Deployment terminal from Code Institute
