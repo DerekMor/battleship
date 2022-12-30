@@ -34,10 +34,10 @@ def generate_ship_locations(ships, size):
     """
     ship_list = []
     while len(ship_list) < ships:
-        a = random.randint(0, (size -1))
-        b = random.randint(0, (size -1))
+        a = random.randint(0, (size - 1))
+        b = random.randint(0, (size - 1))
         ship = [a, b]
-       
+    
         if len(ship_list) == 0:
             ship_list.append(ship)
             continue
@@ -58,7 +58,8 @@ def check_grid_size():
     """
     while True:
         try:
-            grid_size = int(input("What size square grid would you like to use? (between 5 and 10)\n"))
+            grid_size = int(input("What size square grid would you like to \
+                 use? \(between 5 and 10)\n"))
         except ValueError:
             print("Please enter only a number")
             continue
@@ -78,7 +79,8 @@ def check_num_ships():
     """
     while True:
         try:
-            ships = int(input("How many ships would you like to use? (between 2 and 10)\n"))
+            ships = int(input("How many ships would you like to \
+                use? (between 2 and 10)\n"))
         except ValueError:
             print("Please enter only a number")
             continue
@@ -99,13 +101,13 @@ def display_boards(name, player, comp):
     print(f"\n{name}'s board\n")
     for i in range(len(player)):
         for j in range(len(player[i])):
-            print(player[i][j], end= " ")
+            print(player[i][j], end=" ")
         print("")
 
     print("\nComputers board\n")
     for i in range(len(comp)):
         for j in range(len(comp[i])):
-            print(comp[i][j], end= " ")
+            print(comp[i][j], end=" ")
         print("")
     print("\n")
 
@@ -122,16 +124,18 @@ def place_player_ships(board, list):
 
 def get_player_guess(size, board):
     """
-    Asks player for coordinates, validates input, checks if it has been previously guessed
+    Asks player for coordinates, validates input, checks \
+        if it has been previously guessed
     """
     while True:
         try:
-            c1 = int(input("Please enter your first coordinate. The top left corner is position 0, 0:\n"))
+            c1 = int(input("Please enter your first coordinate. \
+                The top left corner is position 0, 0:\n"))
         except ValueError:
             print("Please enter only a number")
             continue
 
-        if c1 < 0 or c1 > (size -1):
+        if c1 < 0 or c1 > (size - 1):
             print(f"please enter a number between 0 and {size -1}")
             continue
 
@@ -141,7 +145,7 @@ def get_player_guess(size, board):
             print("Please enter only a number")
             continue
 
-        if c2 < 0 or c2 > (size -1):
+        if c2 < 0 or c2 > (size - 1):
             print(f"please enter a number between 0 and {size -1}")
             continue
         
@@ -199,8 +203,8 @@ def get_comp_guess(size, board):
     Generates a computer guess and makes sure it is not a duplicate guess
     """
     while True:
-        a = random.randint(0, (size -1))
-        b = random.randint(0, (size -1))
+        a = random.randint(0, (size - 1))
+        b = random.randint(0, (size - 1))
         if board[a][b] == "-":
             print(f"Computer has guessed {a}, {b}")
             time.sleep(1.5)
@@ -245,27 +249,23 @@ def main():
         player_guess = get_player_guess(grid, comp_board)
         comp_board = check_player_hit(player_guess, comp_board, computer_ships)
         player_win = check_win(comp_board, ships, player.name)
-
+        # check win
         if player_win:
             break
 
         player_board = get_comp_guess(grid, player_board)
-
+        # check win
         comp_win = check_win(player_board, ships, comp.name)
 
         if comp_win:
             break
-
+    # finish game        
     print("Thanks for playing!")
     time.sleep(1.5)
-    play_again = input("Enter 'Y' to play again or anything else to end game\n")
+    play_again = input("Enter 'Y' to play again or anything else to \
+         end game\n")
     if play_again == "Y":
         main()
-
-    # generate comp guess
-    # if hit check for win
-    # when won diplay message
-    # play again?
 
 
 main()
